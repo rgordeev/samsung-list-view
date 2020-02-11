@@ -20,27 +20,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<String> names = new ArrayList<>();
-        names.add("name1");
-        names.add("name2");
-        names.add("name3");
-        names.add("name4");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
-        names.add("name5");
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
+        persons.add(new Person("a", "b"));
 
 
 
         ListView listView = findViewById(R.id.listView);
 
-        ListAdapter listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked, names);
+        ListAdapter listAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_checked, persons);
 
         listView.setAdapter(listAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,6 +46,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    static class Person {
+        private String name;
+        private String age;
+        public Person(String name, String age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("name: %s, age: %s", name, age);
+        }
     }
 }
